@@ -1,0 +1,17 @@
+package kr.hs.study.imply;
+
+import java.awt.Color;
+
+public interface ImfoImply {
+	//size
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 650;
+	public static final int TITLE_WIDTH = 250;
+	public static final int TITLE_HEIGHT = 80;
+	public static final int TITLE_BTN_WIDTH = 250;
+	public static final int TITL_BTN_HEIGHT = 50;
+
+	//color
+	public static final Color backgroundColor = new Color(255, 255, 255);
+	public static final Color mainColor = new Color(110, 113, 211);	
+}

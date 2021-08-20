@@ -1,0 +1,7 @@
+package kr.hs.study.page;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame {
+
+}

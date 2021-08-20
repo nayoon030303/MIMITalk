@@ -1,0 +1,9 @@
+package kr.hs.study.imply;
+
+public interface ImfoImply {
+	//size
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 650;
+	public static final int TITLE_WIDTH = 250;
+	public static final int TITLE_HEIGHT = 80;
+}

@@ -1,0 +1,22 @@
+package kr.hs.study.page;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import kr.hs.study.imply.ImfoImply;
+
+public class OpenChat implements ImfoImply{
+	
+	private MainFrame frame = new MainFrame();
+	private JPanel panel = new JPanel();
+	private JLabel infolabel = new JLabel("채팅방 정보");
+	private JLabel iplabel = new JLabel("ip를 입력해주세요");
+	private JLabel portlabel = new JLabel("port번호를 입력해주세요");
+	
+	public OpenChat() {
+		panel.setBackground(backgroundColor);
+		panel.setLayout(null);
+		//panel.add(title);
+		frame.add(panel);
+	}
+}

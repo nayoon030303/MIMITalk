@@ -1,0 +1,14 @@
+package kr.hs.study.page;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame {
+	
+	public MainFrame() {
+		System.out.println("d");
+		super("MiMITalk");
+		setVisible(true);
+		setResizable(false);
+		setSize(WIDTH, HEIGHT);
+	}
+}

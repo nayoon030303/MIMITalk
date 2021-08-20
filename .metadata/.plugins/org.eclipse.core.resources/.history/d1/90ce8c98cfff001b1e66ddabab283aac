@@ -1,0 +1,9 @@
+package kr.hs.study.page;
+
+public class Main {
+	private Title title = new Title();
+	
+	public static void main(String[] args) {
+		System.out.println("t");
+	}
+}
