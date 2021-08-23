@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import kr.hs.study.imply.ImfoImply;
 
@@ -16,10 +17,15 @@ public class OpenChat implements ImfoImply{
 	private JLabel infolabel = new JLabel("채팅방 정보");
 	private JLabel iplabel = new JLabel("ip를 입력해주세요");
 	private JLabel portlabel = new JLabel("port번호를 입력해주세요");
+	private JLabel namelabel = new JLabel("내 정보");
+	private JTextField inputIP = new JTextField();
+	private JTextField inputPort = new JTextField();
+	private JTextField inputName = new JTextField();
 	
 	//font
 	private Font titleFont = new Font("맑은 고딕", Font.BOLD, 25);
-	private Font subFont = new Font("나눔바른고딕", Font.PLAIN, 20);
+	private Font subFont = new Font("맑은 고딕", Font.PLAIN, 20);
+	private Font inputFont = new Font("맑은 고딕", Font.PLAIN, 18);
 	
 	public OpenChat() {
 		panel.setBackground(backgroundColor);
@@ -33,10 +39,27 @@ public class OpenChat implements ImfoImply{
 		iplabel.setBounds(30, 80, 300, 50);
 		iplabel.setForeground(Color.DARK_GRAY);
 		
+		inputIP.setFont(inputFont);
+		inputIP.setBounds(30,130,300,35);
+		
+		portlabel.setFont(subFont);
+		portlabel.setBounds(30, 180, 300, 50);
+		portlabel.setForeground(Color.DARK_GRAY);
+		
+		inputPort.setFont(inputFont);
+		inputPort.setBounds(30,230,300,35);
+		
+		namelabel.setFont(titleFont);
+		namelabel.setBounds(20, 280,  300, 50);
+		namelabel.setForeground(Color.DARK_GRAY);
+		
 		
 		panel.add(infolabel);
 		panel.add(iplabel);
 		panel.add(portlabel);
+		panel.add(inputIP);
+		panel.add(inputPort);
+		panel.add(namelabel);
 		frame.add(panel);
 	}
 }
