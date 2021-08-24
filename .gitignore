@@ -2,3 +2,8 @@
 .metadata/.plugins/org.eclipse.core.resources/.history/21/
 
 .metadata/.plugins/org.eclipse.core.resources/.history/22/
+
+*.xmi
+/.metadata/
+
+*.xml

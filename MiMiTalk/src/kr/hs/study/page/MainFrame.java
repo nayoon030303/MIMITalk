@@ -10,8 +10,8 @@ public class MainFrame extends JFrame implements ImfoImply  {
 	public static final int W = 500;
 	public static final int H = 700;
 	
-	public MainFrame() {
-		super("MiMITalk");
+	public MainFrame(String title) {
+		super(title);
 		setVisible(true);
 		setResizable(false);
 		setSize(W, H);

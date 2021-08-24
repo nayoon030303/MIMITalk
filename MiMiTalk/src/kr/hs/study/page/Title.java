@@ -23,7 +23,7 @@ public class Title implements ImfoImply{
 	private Font titleFont = new Font("Consolas", Font.BOLD, 50);
 	private Font subFont = new Font("¸¼Àº °íµñ", Font.PLAIN, 20);
 	//
-	private MainFrame frame = new MainFrame();
+	private MainFrame frame = new MainFrame("MiMiTalk");
 	private JPanel panel = new JPanel();
 	private JLabel title = new JLabel("MiMiTalk");
 	private JButton open_chat = new JButton("Ã¤ÆÃ¹æ ¿­±â");
@@ -75,10 +75,9 @@ public class Title implements ImfoImply{
 				
 				//System.out.println("p");
 			}else if(e.getSource() == join_chat) {
-				//System.out.println("j");
+				new JoinChat();
 			}
 			frame.dispose();
-			
 			
 		}
 		

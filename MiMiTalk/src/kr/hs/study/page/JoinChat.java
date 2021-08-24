@@ -1,13 +1,9 @@
 package kr.hs.study.page;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,26 +12,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kr.hs.study.imply.ImfoImply;
+import kr.hs.study.page.OpenChat.clickEvent;
 
-public class OpenChat implements ImfoImply{
-	
-	private MainFrame frame = new MainFrame("채팅방 만들기");
+public class JoinChat implements ImfoImply {
+	private MainFrame frame = new MainFrame("채팅방 참여하기");
 	private JPanel panel = new JPanel();
 	
-	private JLabel infolabel = new JLabel("생성할 채팅방 정보");
+	private JLabel infolabel = new JLabel("접속할 채팅방 정보");
 	private JLabel iplabel = new JLabel("ip");
 	private JLabel portlabel = new JLabel("port번호");
 	private JLabel myinfolabel = new JLabel("내 정보");
-	private JLabel namelabel = new JLabel("이름을 입력해주세요");;
+	private JLabel myIPlabel = new JLabel("내 IP");;
+	private JLabel namelabel = new JLabel("이름을 입력해주세요");
 	
-	private JLabel inputIP = new JLabel("10.96");
+	private JTextField inputIP = new JTextField();
 	private JTextField inputPort = new JTextField();
+	private JLabel inputMyIP = new JLabel();
 	private JTextField inputName = new JTextField();
-	private JButton startBtn = new JButton("채팅방 열기");
+	private JButton startBtn = new JButton("채팅방 참여하기");
 	
-	
-	
-	public OpenChat() {
+	public JoinChat() {
 		panel.setBackground(backgroundColor);
 		panel.setLayout(null);
 		
@@ -70,6 +66,13 @@ public class OpenChat implements ImfoImply{
 		inputName.setFont(inputFont);
 		inputName.setBounds(30,400,300,35);
 		
+		myIPlabel.setFont(subFont);
+		myIPlabel.setBounds(30, 450, 300, 50);
+		myIPlabel.setForeground(Color.DARK_GRAY);
+		
+		inputMyIP.setFont(inputFont);
+		inputMyIP.setBounds(30,500,300,35);
+		
 		
 		startBtn.setFont(titleFont);
 		startBtn.setOpaque(true);
@@ -89,58 +92,35 @@ public class OpenChat implements ImfoImply{
 		panel.add(namelabel);
 		panel.add(inputName);
 		panel.add(startBtn);
+		panel.add(myIPlabel);
+		panel.add(inputMyIP);
 		frame.add(panel);
 		
 		
 		try {
-			InetAddress local = InetAddress.getLocalHost();
-			inputIP.setText(local.getHostAddress());
+			InetAddress myIP = InetAddress.getLocalHost();
+			inputMyIP.setText(myIP.getHostAddress());
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 
 		
 	}
-	
-	public boolean availablePort(String host, int port){
-		boolean result = false;
-		 
-		try {
-		    (new Socket(host, port)).close();
-		 
-		    result = true;
-		}
-		catch(Exception e) {
-		    
-		}
-		    return result;
-	}
-	
-	
 	class clickEvent implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			String port = inputPort.getText();
+			String ip = inputIP.getText();
 			String name = inputName.getText();
 			
 			//null 체크
 			if(port.length()==0 || name.length()==0) {
 				System.out.println("입력해주세요");
-			    JOptionPane.showMessageDialog(frame, "port와 이름을 모두 입력해주세요");
+			    JOptionPane.showMessageDialog(frame, "ip, port, 이름 을/를 모두 입력해주세요");
 			}else {
-				//port이용가능 체크
-				boolean portCheck = availablePort(inputIP.getText(),Integer.parseInt(port));
-				 
-				if(portCheck){
-				    System.out.println("이미 사용중입니다.");
-				    JOptionPane.showMessageDialog(frame, "이미 사용중인 port번호 입니다");
-				}else {
-					//채팅시작
-					//openServer(Integer.parseInt(port));
-					new ServerChatting(Integer.parseInt(port),name);
-					frame.dispose();
-				}
+				new ClientChatting(ip, Integer.parseInt(port), name);
+				frame.dispose();
 			}
 		}
 	}
